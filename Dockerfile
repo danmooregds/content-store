@@ -8,6 +8,9 @@ ENV MONGODB_URI mongodb://mongo/content-store
 ENV PORT 3068
 ENV RAILS_ENV development
 
+# Hack in content-schemas
+RUN git clone https://github.com/alphagov/govuk-content-schemas $GOVUK_CONTENT_SCHEMAS_PATH
+
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
 
