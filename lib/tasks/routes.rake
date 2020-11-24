@@ -10,4 +10,10 @@ namespace :routes do
     item = ContentItem.find_by!(base_path: args[:base_path])
     item.route_set.delete!
   end
+
+  desc "What plek is running?"
+  task plek: :environment do
+    puts "This is what plek is running...."
+    puts Plek.current.find("router-api")
+  end
 end
