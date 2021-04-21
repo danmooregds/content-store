@@ -29,6 +29,6 @@ production:
         ssl_verify: <%= ENV['MONGO_SSL_VERIFY'] || 'true' %>
         server_selection_timeout: 5
         write:
-          w: <%= ENV['MONGO_WRITE_CONCERN'] || 'majority' %>
+          w: <%= ENV['MONGO_WRITE_CONCERN'] || 1 %>
         read:
           mode: :secondary_preferred
