@@ -1,15 +1,15 @@
 require "rails_helper"
 
-describe FindByPath do
-  # Using an actual Model as it's a real pain to mock mongoid criterias and
-  # similar
-  class CompatibleModel
-    include Mongoid::Document
-    field :base_path, type: String
-    field :routes, type: Array, default: []
-    field :redirects, type: Array, default: []
-  end
+# Using an actual Model as it's a real pain to mock mongoid criterias and
+# similar
+class CompatibleModel
+  include Mongoid::Document
+  field :base_path, type: String
+  field :routes, type: Array, default: []
+  field :redirects, type: Array, default: []
+end
 
+describe FindByPath do
   FactoryBot.define do
     factory :compatible_model do
       base_path { "/base-path" }
