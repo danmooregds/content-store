@@ -190,12 +190,14 @@ class ContentItem
   end
 
   def register_routes(previous_item: nil)
+    return # router api not working on govuk-docker
     return unless should_register_routes?(previous_item:)
 
     tries = Rails.application.config.register_router_retries
     begin
       route_set.register!
-    rescue GdsApi::BaseError
+    rescue GdsApi::BaseError => err
+      Rails.logger.warn('*** error registering routes: ' + err.inspect)
       tries -= 1
       tries.positive? ? retry : raise
     end
